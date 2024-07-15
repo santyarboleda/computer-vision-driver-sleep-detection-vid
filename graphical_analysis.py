@@ -1,16 +1,8 @@
-"""
-Created on Sun Nov 20 15:19:01 2022
-@author = Karol
-"""
-
-# Import Dependencies
-
 import os
 import matplotlib.pyplot as plt
 
-
 """
-Function to take a list of EAR values and plot and save the EAR graph for analysis
+Function to plot and save the EAR graph for analysis based on EAR values
 """
 def plot_ear_graph(EAR):
     

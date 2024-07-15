@@ -1,10 +1,3 @@
-"""
-Created on Sat Nov 19 23:21:57 2022
-@author: sarboledaq
-"""
-
-# Import Dependencies
-
 import json
 import cv2
 from scipy.spatial import distance
@@ -23,7 +16,7 @@ import pygame
 path_to_config_file = "config.json"
 
 """
-Function to load config parameters
+Function to load config data
 """
 def config_params():
 
@@ -41,7 +34,7 @@ def config_params():
 
 
 """
-Function to Calculate the EAR of an eye
+Function to compute EAR
 """
 def eye_aspect_ratio(eye):
 
@@ -58,7 +51,7 @@ def eye_aspect_ratio(eye):
 
 
 """
-Function to Calculate the MAR of the mouth
+Function to compute MAR
 """
 def mouth_aspect_ratio(mouth):
 
@@ -110,7 +103,7 @@ def driver_sleep_detector():
         ret, frame = cap.read()
         # if frame is read correctly ret is True
         if not ret:
-            print("Can't receive frame. Closing the System ...")
+            print("No se puede recibir el fotograma. Cerrando el sistema...")
             break
         
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -175,11 +168,11 @@ def driver_sleep_detector():
                     cv2.putText(frame, "*************¡ADVERTENCIA! ¡¡¡Tienes sueño!!! *************", (15, 35), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
                     # Exportar el frame cuando la persona se queda dormida
                     cv2.imwrite("bostezos.png", frame)
-                    print("WARNING !!!")
+                    print("ADVERTENCIA!!!")
                 single_yawn_event = 0
 
             if yawns_counter == 4 or yawns_frame_counter >= number_of_frames_yawns:
-                print("Yawns Counter Reset")
+                print("Contador de bostezos reiniciado")
                 yawns_counter = 0
                 yawns_frame_counter = 0
             
@@ -201,7 +194,7 @@ def driver_sleep_detector():
 
     # Clean the Root Folder
     try:
-        print("Cleaning Root Directory")
+        print("Limpiando directorio raiz")
         shutil.rmtree("__pycache__")
     except:
         pass
